@@ -18,11 +18,17 @@ public class Application {
 
             arr = st.split(separator.getSeparator());
         }
+        if(arr.length == 1) throw new IllegalArgumentException(); //구분이 되지 않는 경우
 
         int answer = 0;
         for(String number : arr){
-            int num = Integer.parseInt(number);
-            answer += num;
+            try{
+                int num = Integer.parseInt(number);
+                if(num < 0) throw new IllegalArgumentException(); //숫자가 음수인 경우
+                answer += num;
+            }catch (IllegalArgumentException e){
+                throw new IllegalArgumentException(); //구분된 문자열을 숫자로 변환할 수 없는경우
+            }
         }
 
         System.out.println("결과 : " + answer);
