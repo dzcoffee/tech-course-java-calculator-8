@@ -14,6 +14,7 @@ public class CalculatorController {
 
     public void run() {
         try {
+            calculatorView.printBeforeInput();
             String input = calculatorView.readInput();
             int result = calculator.add(input);
             calculatorView.printResult(result);
